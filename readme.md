@@ -4,9 +4,9 @@ A PHP Class to fetch Twitter Conversations
 
 ---------
 
-With the release of Twitters REST v1.1 API's, they depreciated the functionality of retreving a public conversation of Tweets. This class helps to solve that.
+With the release of Twitters REST v1.1 API's, they depreciated the functionality of retreving a public conversation of Tweets.
+This class helps to solve that.
 
------
 
 View full documentation at: http://adriancrepaz.com/twitter_conversions_api
 
@@ -16,7 +16,7 @@ View full documentation at: http://adriancrepaz.com/twitter_conversions_api
 Example Request
 ---
 
-```
+```php
 <?php
 
 // Require the acTwitterConversation class.
@@ -44,7 +44,8 @@ $conversation = $twitter->fetchConversion($tweetId, $method, $conversate);
 
 print_r($conversation);
 
-?>```
+?>
+```
 
 Example Response
 ---
@@ -78,17 +79,11 @@ Array
 
 ----
 
-Options
----
+## Options ##
 
 Please see the [full documentation](http://adriancrepaz.com/twitter_conversions_api) at for a list of options, response types and notes.
 
 
-----
+--
 
-
-#### Credits ####
 Created by Adrian Crepaz - http://adriancrepaz.com - @adriancrepaz
-
----
-Please open an issue, or pull-request if you find any issues or improvements.
