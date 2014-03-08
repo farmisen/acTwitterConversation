@@ -10,7 +10,7 @@
  * http://adriancrepaz.com/twitter_conversions_api
  * https://github.com/adriancrepaz/acTwitterConversation
  *
- * Version: 0.1
+ * Version: 0.1.1
  */
 
 
@@ -255,15 +255,21 @@ class acTwitterConversation {
 		$href = $node->getAttribute('href');
 		if(!empty($href)){
 			
-			$href = explode('/', trim(strstr($href, '?', true), '/'));
+			$tweetId = null;
+			$href = explode('/', trim($href, '/'));
+			
+			// Now using explode() as PHP < 5.3.0 doesn't support the $before_needle on strstr.
+			if(!empty($href[2])){
+				list($tweetId) = explode('?', $href[2]);
+			}
 
-			if(empty($href[2]) OR (!empty($href[2]) AND !is_numeric($href[2]))){
+			if(empty($tweetId) OR (!empty($tweetId) AND !is_numeric($tweetId))){
 				return false;
 			}
 			
 			return array(
-				'id'		=> $href[2],
-				'state'		=> ((intval($href[2]) < $this->tweetId) ? 'before' : 'after')
+				'id'		=> $tweetId,
+				'state'		=> ((intval($tweetId) < $this->tweetId) ? 'before' : 'after')
 			);		
 		}
 		
